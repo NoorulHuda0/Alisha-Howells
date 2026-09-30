@@ -1,0 +1,210 @@
+/* Design Tokens & Universal Base Styles */
+:root {
+  /* Typography */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  
+  /* Color Palette - Minimal Forest Green & Alabaster */
+  --color-primary: #153e2d;
+  --color-primary-hover: #1b4d36;
+  --color-primary-light: #eaf1ed;
+  --color-accent: #236345;
+  --color-accent-subtle: #ebf3ee;
+  
+  --color-bg: #f9faf8;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f1f4f1;
+  --color-border: #e2e7e3;
+  --color-border-subtle: #edf1ee;
+
+  --color-text-main: #111915;
+  --color-text-muted: #4e5e54;
+  --color-text-light: #718177;
+  --color-text-inverse: #ffffff;
+
+  /* Spacing Scale (4, 8, 16, 24, 32, 48, 64, 96, 128px) */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --space-128: 128px;
+
+  /* Layout Containers */
+  --content-max-width: 1200px;
+  --container-padding: clamp(16px, 4vw, 24px);
+
+  /* Radius System */
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows (two restrained levels only) */
+  --shadow-rest: 0 4px 16px -2px rgba(17, 25, 21, 0.04), 0 1px 3px 0 rgba(17, 25, 21, 0.02);
+  --shadow-hover: 0 12px 28px -4px rgba(17, 25, 21, 0.07), 0 4px 8px -2px rgba(17, 25, 21, 0.03);
+
+  /* Transitions */
+  --transition-fast: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-text-main);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: 1.35rem;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+p {
+  max-width: 65ch;
+  color: var(--color-text-muted);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Section Rhythm */
+.section-wrapper {
+  padding-top: var(--space-96);
+  padding-bottom: var(--space-96);
+  scroll-margin-top: 80px;
+}
+
+.section-wrapper.alt-bg {
+  background-color: var(--color-surface-alt);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+@media (max-width: 1024px) {
+  .section-wrapper {
+    padding-top: var(--space-64);
+    padding-bottom: var(--space-64);
+  }
+}
+
+@media (max-width: 640px) {
+  .section-wrapper {
+    padding-top: var(--space-48);
+    padding-bottom: var(--space-48);
+  }
+}
+
+/* Layout Container */
+.container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* Eyebrow Label */
+.eyebrow {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-12, 12px);
+  font-family: var(--font-body);
+}
+
+/* Clean Form Elements */
+input, textarea, select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-main);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  width: 100%;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(21, 62, 45, 0.1);
+}
+
+label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 6px;
+}
+
+/* Utility to ensure tabular numerals */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
